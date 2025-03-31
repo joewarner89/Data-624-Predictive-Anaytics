@@ -1,0 +1,207 @@
+---
+title: "Data 624 Homework 3"
+author: "Warner Alexis"
+date: "2025-03-02"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data Preprocessing 
+
+**Exercise 3.1** 
+The UC Irvine Machine Learning Repository6 contains a data set related
+to glass identification. The data consist of 214 glass samples labeled as one
+of seven class categories. There are nine predictors, including the refractive
+index and percentages of eight elements: Na, Mg, Al, Si, K, Ca, Ba, and Fe.
+
+(a) Using visualizations, explore the predictor variables to understand their
+    distributions as well as the relationships between predictors.
+
+    
+```{r}
+library(mlbench)
+data("Glass")
+str(Glass)
+library(corrplot)
+library(reshape2)
+library(GGally)
+library(caret)
+# use only numerical values 
+# Convert data to long format, ensuring all numeric values
+glass_long <- melt(Glass, id.vars = "Type")  
+
+
+# histogram 
+ggplot(glass_long, aes(x= value)) +
+  geom_histogram(bins=30, fill = 'blue', alpha=0.7) +
+  facet_wrap(~ variable, scales = 'free') +
+  theme_minimal() +
+  labs(title = 'Distribution of Predictor Variables', x = "value", y = "Count" )
+
+
+# view Scatter plot of for relationship 
+ggpairs(Glass, aes(color=Type, alpha=0.5))
+
+# use corrplot library
+library(dplyr)
+Glass %>% select( -Type) %>% cor() %>% corrplot(, 
+                                           method="color",
+                                           diag=FALSE,
+                                           type="lower",
+                                           addCoef.col = "black",
+                                           number.cex=0.70)
+```
+
+
+The pair plot provides a comprehensive visual analysis of the relationships between numerical variables in the **Glass** dataset. The diagonal elements display histograms and density plots, showing the distribution of each variable. Some variables, such as **RI, Si, and Ca**, exhibit skewed distributions, indicating potential transformations may be necessary. The lower triangle contains scatterplots illustrating relationships between variable pairs, with color-coded points representing different glass types. Notable patterns in these scatterplots suggest possible correlations.
+
+The upper triangle presents correlation values, highlighting significant relationships between variables. For example, **Si and RI, as well as Ca and Ba,** show strong positive correlations, whereas **Na and RI, along with Mg and Ca,** have moderate associations. The significance of these correlations, denoted by asterisks, indicates which variables may be most relevant for classification. Additionally, the rightmost column features boxplots that reveal variations in each variable across different glass types, emphasizing the importance of certain features such as **Si, Na, and Ca** in distinguishing between categories.
+
+Several variables, particularly **K, Ba, and Fe**, exhibit outliers, which may impact modeling and require further preprocessing. Given these observations, transformations such as **logarithmic scaling or normalization** could help address skewness and improve classification accuracy. The insights from this visualization suggest that selecting relevant predictors and handling data irregularities appropriately will be crucial for developing an effective classification model for glass type identification.
+
+(b) Do there appear to be any outliers in the data? Are any predictors skewed?
+
+
+To check skewness:
+A skewness value > 1 or < -1 indicates a highly skewed distribution.
+
+
+
+```{r}
+# Boxplots for each predictor
+ggplot(glass_long, aes(x = variable, y = value)) +
+  geom_boxplot(fill = "orange", alpha = 0.7) +
+  theme_minimal() +
+  coord_flip() +
+  labs(title = "Boxplots of Predictor Variables", x = "Predictor", y = "Value")
+
+
+# Load library for skewness
+library(e1071)
+
+# Calculate skewness for each numeric variable
+skewness_values <- sapply(Glass[, -10], skewness)
+
+# Display skewness values
+print(skewness_values)
+
+```
+
+
+Na appears to be approximately normally distributed with a slight right skew, while Al, RI, and Ca also exhibit right-skewed distributions. In contrast, Fe, Ba, and K are highly right-skewed. Si shows a left-skewed distribution, whereas Mg appears bimodal and also leans towards a left skew. 
+
+The boxplots reveal the presence of multiple outliers across most variables, with the exception of Mg, which appears to have fewer or no significant outliers.
+
+
+
+(c) Are there any relevant transformations of one or more predictors that
+    might improve the classification model?
+    
+```{r}
+
+numeric_glass <- Glass %>% select( -Type)
+par(mfrow=c(1,2))
+BoxCoxTrans(numeric_glass$Al) 
+
+hist(numeric_glass$Al, main='Original Distribution of Al')
+hist(numeric_glass$Al**.5, main='Transformed (Lambda = 0.5)')
+
+# Spacial sign transformation of predictors
+boxplot(numeric_glass, main='Original Distributions')
+boxplot(caret::spatialSign(scale(numeric_glass)), main='Spacial Sign Transformed')
+
+
+```
+
+
+
+Yes, applying transformations to certain predictors in the **Glass** dataset can improve the classification model. Right-skewed variables such as **Fe, Ba, K, Al, RI, and Ca** would benefit from **Box-Cox, log, or square root transformations** to reduce skewness and stabilize variance. Left-skewed variables like **Si and Mg** may require **reflection and log transformation** to normalize their distributions. Additionally, **Mg**, which appears bimodal, could be handled through **clustering or smoothing techniques**. Outlier-prone variables like **Ba, Fe, and K** may require **Winsorization or robust scaling** to limit their impact on the model. These transformations help improve normality, feature scaling, and overall model performance, making classification more effective.
+
+
+**Exercise 3.2**
+The soybean data can also be found at the UC Irvine Machine Learning
+Repository. Data were collected to predict disease in 683 soybeans. The 35
+predictors are mostly categorical and include information on the environmental
+conditions (e.g., temperature, precipitation) and plant conditions (e.g., left
+spots, mold growth). The outcome labels consist of 19 distinct classes.
+
+(a) Investigate the frequency distributions for the categorical predictors. Are
+any of the distributions degenerate in the ways discussed earlier in this
+chapter?
+
+
+
+Degenerate distributions are those that have only a single possible value. In the dataset, **mycelium** and **sclerotia** appear to be degenerate, showing no variation. Additionally, **leaf.mild** and **leaf.malf** are nearly one-sided, with most observations falling into a single category when excluding missing values.
+
+
+```{r}
+# Load necessary library
+library(mlbench)
+
+# Load the Soybean dataset
+data(Soybean)
+
+# Calculate missing percentage for each column
+missing_percent <- colSums(is.na(Soybean)) / nrow(Soybean) * 100
+
+# Convert to a data frame for better visualization
+missing_df <- data.frame(Variable = names(missing_percent), Missing_Percentage = missing_percent)
+
+# Print missing percentages sorted in descending order
+missing_df <- missing_df[order(-missing_df$Missing_Percentage), ]
+print(missing_df)
+head(Soybean)
+
+
+
+library(dplyr)
+library(tidyr)
+
+
+columns <- colnames(Soybean)
+
+lapply(columns,
+       function(col) {
+         ggplot(Soybean, 
+                aes_string(col)) + geom_bar() + coord_flip() + ggtitle(col)})
+
+
+
+# Plot missing data percentages
+ggplot(missing_df, aes(x = reorder(Variable, -Missing_Percentage), y = Missing_Percentage, fill = Missing_Percentage)) +
+  geom_bar(stat = "identity", alpha = 0.8) +
+  theme_minimal() +
+  labs(title = "Percentage of Missing Data per Predictor",
+       x = "Predictor", 
+       y = "Missing Percentage (%)") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  scale_fill_gradient(low = "blue", high = "red") 
+
+
+
+
+```
+
+
+
+
+(b) Roughly 18% of the data are missing. Are there particular predictors that
+are more likely to be missing? Is the pattern of missing data related to
+the classes?
+
+The expected outcome of the bar plot is a clear visualization of the **percentage of missing values** for each variable in the **Soybean dataset**. The variables with the highest proportion of missing data will be displayed first, allowing for easy identification of the most affected predictors. Additionally, the bars will be **color-coded from blue to red**, helping to visually emphasize the severity of missingness. This plot provides a quick and effective way to assess data quality and determine whether imputation or variable removal may be necessary. If needed, threshold indicators can be added to highlight variables with excessive missing values that may require special handling.
+
+
+
+(c) Develop a strategy for handling missing data, either by eliminating
+predictors or imputation.
+
+
+
+To manage missing data, different approaches can be considered based on the extent and pattern of missingness. One option is removing predictors with excessive missing values (e.g., more than 30%) or those that are degenerate. Alternatively, imputation methods such as mode imputation (for categorical predictors), k-NN imputation (estimating missing values based on similar observations), or Multiple Imputation (MICE) can be applied for more complex missing patterns. Finally, after handling missing data, it is important to evaluate the impact on the classification model to ensure that imputation or removal does not introduce bias or degrade performance.

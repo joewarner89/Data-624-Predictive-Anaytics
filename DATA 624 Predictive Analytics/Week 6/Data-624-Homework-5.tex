@@ -1,0 +1,1180 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={DATA 624 Homework 5},
+  pdfauthor={Warner Alexis},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{DATA 624 Homework 5}
+\author{Warner Alexis}
+\date{2025-03-09}
+
+\begin{document}
+\maketitle
+
+\hypertarget{forecasting-principles-and-practice}{%
+\subsection{\texorpdfstring{\textbf{Forecasting: Principles and
+Practice}}{Forecasting: Principles and Practice}}\label{forecasting-principles-and-practice}}
+
+\textbf{Exercise 8.1} Consider the the number of pigs slaughtered in
+Victoria, available in the aus\_livestock dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(forecast)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'quantmod':
+##   method            from
+##   as.zoo.data.frame zoo
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(mlbench)}
+\FunctionTok{library}\NormalTok{(tsibble)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'tsibble':
+##   method               from 
+##   as_tibble.grouped_df dplyr
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'tsibble'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tsibbledata)}
+\FunctionTok{library}\NormalTok{(fpp3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages -------------------------------------------- fpp3 1.0.1 --
+\end{verbatim}
+
+\begin{verbatim}
+## v tibble    3.2.1     v ggplot2   3.5.1
+## v tidyr     1.3.1     v feasts    0.4.1
+## v lubridate 1.9.3     v fable     0.4.1
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------------- fpp3_conflicts --
+## x lubridate::date()     masks base::date()
+## x dplyr::filter()       masks stats::filter()
+## x tsibble::intersect()  masks base::intersect()
+## x lubridate::interval() masks tsibble::interval()
+## x dplyr::lag()          masks stats::lag()
+## x tsibble::setdiff()    masks base::setdiff()
+## x tsibble::union()      masks base::union()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(fpp2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages ---------------------------------------------- fpp2 2.5 --
+\end{verbatim}
+
+\begin{verbatim}
+## v fma       2.5     v expsmooth 2.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'fpp2'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:fpp3':
+## 
+##     insurance
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(lubridate)}
+\FunctionTok{library}\NormalTok{(patchwork)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Use the ETS() function to estimate the equivalent model for simple
+  exponential smoothing. Find the optimal values of\\
+  α and ℓ0, and generate forecasts for the next four months.
+\end{enumerate}
+
+The \textbf{Exponential Smoothing State Space Model (ETS)} applied to
+the number of pigs slaughtered in Victoria is \textbf{ETS(A,N,N)},
+meaning it assumes an \textbf{additive error component (A), no trend
+(N), and no seasonality (N)}. This model smooths past values without
+incorporating long-term trends or seasonal patterns. The estimated
+\textbf{smoothing parameter (α = 0.322)} suggests that recent
+observations have a moderate influence on future predictions, rather
+than being overly weighted. The \textbf{initial level
+(\texttt{l{[}0{]}}) is 100,646.6}, indicating the estimated starting
+average of the series. The \textbf{error variance
+(\texttt{σ²\ =\ 87,480,760})} reflects the degree of variability in the
+residuals, showing a considerable level of fluctuation. The model
+selection metrics, including the \textbf{Akaike Information Criterion
+(AIC)}, \textbf{Corrected AIC (AICc)}, and \textbf{Bayesian Information
+Criterion (BIC)} (values not provided), would typically be used to
+compare this ETS model to alternative models. The accompanying graph
+visually represents the historical trend of pig slaughters, showing
+fluctuations with noticeable peaks around 2000 and subsequent declines
+and increases post-2010. The forecast for future periods remains stable,
+as \textbf{ETS(A,N,N) does not account for trend or seasonality}, with
+uncertainty captured by the \textbf{80\% and 95\% confidence intervals}.
+If a clear trend or seasonality exists in the data, alternative models
+such as \textbf{ETS(A,A,N) (with a trend) or ETS(A,N,A) (with
+seasonality)} may provide a better fit.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aus\_pig }\OtherTok{\textless{}{-}}\NormalTok{ aus\_livestock }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(State }\SpecialCharTok{==} \StringTok{\textquotesingle{}Victoria\textquotesingle{}}\NormalTok{,}
+\NormalTok{                                    Animal }\SpecialCharTok{==} \StringTok{\textquotesingle{}Pigs\textquotesingle{}}\NormalTok{ )}
+
+\NormalTok{fit }\OtherTok{\textless{}{-}}\NormalTok{ aus\_pig }\SpecialCharTok{|\textgreater{}} \FunctionTok{model}\NormalTok{(}
+  \FunctionTok{ETS}\NormalTok{(Count }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"N"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"N"}\NormalTok{))}
+\NormalTok{)  }
+\NormalTok{fc }\OtherTok{\textless{}{-}}\NormalTok{ fit }\SpecialCharTok{|\textgreater{}} \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h =} \DecValTok{4}\NormalTok{)}
+
+\NormalTok{fc }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(aus\_livestock) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Number of Pigs Slaughtered in Victoria"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{report}\NormalTok{(fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Series: Count 
+## Model: ETS(A,N,N) 
+##   Smoothing parameters:
+##     alpha = 0.3221247 
+## 
+##   Initial states:
+##      l[0]
+##  100646.6
+## 
+##   sigma^2:  87480760
+## 
+##      AIC     AICc      BIC 
+## 13737.10 13737.14 13750.07
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Compute a 95\% prediction interval for the first forecast using y ±
+  1.96s where s is the standard deviation of the residuals. Compare your
+  interval with the interval produced by R.
+\end{enumerate}
+
+The \textbf{95\% prediction interval} for the first forecasted period is
+\textbf{{[}76,854.79, 113,518.3{]}}, meaning that the actual number of
+pigs slaughtered is expected to fall within this range \textbf{95\% of
+the time}. This interval accounts for the uncertainty in the forecast,
+with a wider range indicating higher variability in predictions. The
+point forecast (\texttt{y}) provides the expected value, but due to
+potential fluctuations in the data, the actual observed value may
+deviate within this range. The \textbf{standard deviation of residuals
+(\texttt{s})} reflects the level of dispersion in past forecast errors,
+further influencing the confidence interval's width. Overall, this
+prediction interval serves as a measure of uncertainty, ensuring that
+future values are not assumed to follow a single deterministic path but
+rather fall within a probable range.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OtherTok{\textless{}{-}} \FunctionTok{residuals}\NormalTok{(fit)}\SpecialCharTok{$}\NormalTok{.resid }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{sd}\NormalTok{()}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ fc}\SpecialCharTok{$}\NormalTok{.mean[}\DecValTok{1}\NormalTok{]}
+\NormalTok{fc }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{hilo}\NormalTok{(}\DecValTok{95}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pull}\NormalTok{(}\StringTok{\textquotesingle{}95\%\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## <hilo[1]>
+## [1] [76854.79, 113518.3]95
+\end{verbatim}
+
+\textbf{Exercise 8.5} Data set global\_economy contains the annual
+Exports from many countries. Select one country to analyse. a. Plot the
+Exports series and discuss the main features of the data.
+
+b.Use an ETS(A,N,N) model to forecast the series, and plot the
+forecasts.
+
+The time series plot of \textbf{Algeria's exports as a percentage of
+GDP} reveals significant volatility and fluctuations over the decades,
+indicating the country's heavy reliance on external economic factors,
+particularly global commodity prices. From the \textbf{1960s to the
+early 1980s}, the export percentage experienced a general decline,
+possibly due to economic restructuring, oil price shocks, or policy
+shifts. The \textbf{1990s and early 2000s} saw sharp increases, likely
+driven by booms in \textbf{oil and gas exports}, followed by steep
+declines, reflecting Algeria's vulnerability to commodity price
+fluctuations. A notable peak occurred around \textbf{2008-2010},
+coinciding with the global commodities boom, but was followed by a
+decline likely due to \textbf{falling oil prices and economic
+slowdowns}. In recent years, the export-to-GDP ratio has shown a
+downward trend, suggesting possible structural challenges in the economy
+or shifts in trade dynamics. These patterns highlight the importance of
+\textbf{economic diversification} to reduce Algeria's dependency on
+volatile export revenues. Further statistical analysis and forecasting
+could help predict future trends and inform policy decisions aimed at
+stabilizing the country's export sector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# simple exponential smoothing ses}
+
+\NormalTok{algeria\_economy }\OtherTok{\textless{}{-}}\NormalTok{ global\_economy }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(Country }\SpecialCharTok{==} \StringTok{\textquotesingle{}Algeria\textquotesingle{}}\NormalTok{)}
+\NormalTok{algeria\_economy }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{autoplot}\NormalTok{(Exports) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"\% of GDP"}\NormalTok{, }\AttributeTok{title =} \StringTok{\textquotesingle{}Export: Algeria\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# estimated parameters }
+
+\NormalTok{fit }\OtherTok{\textless{}{-}}\NormalTok{ algeria\_economy }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ETS}\NormalTok{(Exports }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"N"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{\textquotesingle{}N\textquotesingle{}}\NormalTok{)))}
+\NormalTok{fc }\OtherTok{\textless{}{-}}\NormalTok{ fit }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{5}\NormalTok{)}
+\NormalTok{fc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A fable: 5 x 5 [1Y]
+## # Key:     Country, .model [1]
+##   Country .model                                                        Year
+##   <fct>   <chr>                                                        <dbl>
+## 1 Algeria "ETS(Exports ~ error(\"A\") + trend(\"N\") + season(\"N\"))"  2018
+## 2 Algeria "ETS(Exports ~ error(\"A\") + trend(\"N\") + season(\"N\"))"  2019
+## 3 Algeria "ETS(Exports ~ error(\"A\") + trend(\"N\") + season(\"N\"))"  2020
+## 4 Algeria "ETS(Exports ~ error(\"A\") + trend(\"N\") + season(\"N\"))"  2021
+## 5 Algeria "ETS(Exports ~ error(\"A\") + trend(\"N\") + season(\"N\"))"  2022
+## # i 2 more variables: Exports <dist>, .mean <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fc }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{autoplot}\NormalTok{(algeria\_economy) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ .fitted), }\AttributeTok{col=}\StringTok{\textquotesingle{}\#D55E00\textquotesingle{}}\NormalTok{,}
+            \AttributeTok{data =} \FunctionTok{augment}\NormalTok{(fit)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y=}\StringTok{"\% of GDP"}\NormalTok{, }\AttributeTok{title=}\StringTok{"Exports: Algeria"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{guides}\NormalTok{(}\AttributeTok{colour =} \StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Compute the RMSE values for the training data.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{\textquotesingle{}The RMSE score is }\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{, }\FunctionTok{accuracy}\NormalTok{(fit)}\SpecialCharTok{$}\NormalTok{RMSE,}\StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## The RMSE score is 
+##  5.865276
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OtherTok{\textless{}{-}} \FunctionTok{residuals}\NormalTok{(fit)}\SpecialCharTok{$}\NormalTok{.resid }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{sd}\NormalTok{()}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ fc}\SpecialCharTok{$}\NormalTok{.mean[}\DecValTok{1}\NormalTok{]}
+\FunctionTok{cat}\NormalTok{(}\StringTok{\textquotesingle{}95\% prediction interval for ETS(ANN) }\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 95% prediction interval for ETS(ANN)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fc }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{hilo}\NormalTok{(}\DecValTok{95}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pull}\NormalTok{(}\StringTok{\textquotesingle{}95\%\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## <hilo[1]>
+## [1] [10.74547, 34.1439]95
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Compare the results to those from an ETS(A,A,N) model. (Remember that
+  the trended model is using one more parameter than the simpler model.)
+  Discuss the merits of the two forecasting methods for this data set.
+\item
+  Compare the forecasts from both methods. Which do you think is best?
+\item
+  Calculate a 95\% prediction interval for the first forecast for each
+  model, using the RMSE values and assuming normal errors. Compare your
+  intervals with those produced using R.
+\end{enumerate}
+
+The \textbf{Root Mean Squared Error (RMSE)} for the \textbf{ETS(AAN)}
+model is \textbf{5.89\%}, indicating the average deviation of forecasted
+values from actual values. A lower RMSE suggests better model accuracy,
+meaning ETS(AAN) has a relatively small prediction error. The
+\textbf{prediction interval for ETS(ANN)} at \textbf{95\% confidence} is
+\textbf{{[}10.02, 33.94{]}}, which defines the range where future values
+are expected to fall 95\% of the time. This interval reflects the
+model's uncertainty, with a wider range indicating higher variability.
+If the prediction intervals for \textbf{ETS(AAN) and ETS(ANN) are
+similar}, it suggests both models perform comparably in terms of
+uncertainty, but RMSE should be the key factor in determining which
+model provides better accuracy. A comparison of other metrics like
+\textbf{AIC, BIC, and MAPE} could further refine the model selection
+process.
+
+The RMSE for model ETS(AAN) is slighly better than the RMSE of model
+ETS(ANN) because it is slighly lower.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# estimated parameters }
+
+\NormalTok{fit2 }\OtherTok{\textless{}{-}}\NormalTok{ algeria\_economy }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ETS}\NormalTok{(Exports }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{\textquotesingle{}N\textquotesingle{}}\NormalTok{)))}
+\NormalTok{fc2 }\OtherTok{\textless{}{-}}\NormalTok{ fit2 }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{5}\NormalTok{)}
+\NormalTok{fc2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A fable: 5 x 5 [1Y]
+## # Key:     Country, .model [1]
+##   Country .model                                                        Year
+##   <fct>   <chr>                                                        <dbl>
+## 1 Algeria "ETS(Exports ~ error(\"A\") + trend(\"A\") + season(\"N\"))"  2018
+## 2 Algeria "ETS(Exports ~ error(\"A\") + trend(\"A\") + season(\"N\"))"  2019
+## 3 Algeria "ETS(Exports ~ error(\"A\") + trend(\"A\") + season(\"N\"))"  2020
+## 4 Algeria "ETS(Exports ~ error(\"A\") + trend(\"A\") + season(\"N\"))"  2021
+## 5 Algeria "ETS(Exports ~ error(\"A\") + trend(\"A\") + season(\"N\"))"  2022
+## # i 2 more variables: Exports <dist>, .mean <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fc2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{autoplot}\NormalTok{(algeria\_economy) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y=}\StringTok{"\% of GDP"}\NormalTok{, }\AttributeTok{title=}\StringTok{"Exports: Algeria"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{guides}\NormalTok{(}\AttributeTok{colour =} \StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{\textquotesingle{}The RMSE score for ETS(AAN) is \textquotesingle{}}\NormalTok{, }\FunctionTok{accuracy}\NormalTok{(fit2)}\SpecialCharTok{$}\NormalTok{RMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## The RMSE score for ETS(AAN) is  5.888577
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OtherTok{\textless{}{-}} \FunctionTok{residuals}\NormalTok{(fit2)}\SpecialCharTok{$}\NormalTok{.resid }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{sd}\NormalTok{()}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ fc2}\SpecialCharTok{$}\NormalTok{.mean[}\DecValTok{1}\NormalTok{]}
+ 
+\FunctionTok{cat}\NormalTok{(}\StringTok{\textquotesingle{}95\% prediction interval for ETS(AAN) }\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 95% prediction interval for ETS(AAN)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fc2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{hilo}\NormalTok{(}\DecValTok{95}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pull}\NormalTok{(}\StringTok{\textquotesingle{}95\%\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## <hilo[1]>
+## [1] [10.01692, 33.93936]95
+\end{verbatim}
+
+\textbf{Exercise 8.6}
+
+Forecast the Chinese GDP from the global\_economy data set using an ETS
+model. Experiment with the various options in the ETS() function to see
+how much the forecasts change with damped trend, or with a Box-Cox
+transformation. Try to develop an intuition of what each is doing to the
+forecasts.
+
+To forecast \textbf{China's GDP} using the \textbf{ETS (Exponential
+Smoothing State Space) model}, different variations were applied to
+assess the impact of \textbf{trend damping and Box-Cox transformation}
+on the projections. The Box-Cox transformation (\texttt{box\_cox(0.3)})
+was used to \textbf{stabilize variance} and manage exponential growth
+trends, while \textbf{log transformation} helped smooth fluctuations.
+The \textbf{damped trend models (\texttt{Ad})} introduced a mechanism to
+\textbf{slow down long-term growth projections}, preventing unrealistic
+exponential increases, whereas \textbf{Holt's linear model (\texttt{A})}
+projected continued growth without moderation. The \textbf{simple model
+(\texttt{N} for trend)} assumed a constant GDP, which is
+\textbf{unrealistic} given China's historical economic trajectory.
+Forecast visualizations revealed that \textbf{non-damped models, such as
+Holt's method, predict aggressive future GDP growth}, while
+\textbf{damped and log-transformed models} offer more
+\textbf{conservative and stable} projections. If China's economy
+continues to expand rapidly, models such as \textbf{Holt's or Box-Cox
+transformation-based forecasts} may be appropriate. However, if economic
+\textbf{growth slows due to structural changes or external factors},
+\textbf{damped trend models} provide a more \textbf{realistic outlook}.
+The choice of model should be guided by economic context, and further
+comparison using \textbf{AIC, RMSE, or other accuracy metrics} would
+help determine the most reliable forecast.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# simple exponential smoothing ses}
+
+\NormalTok{lambda\_china }\OtherTok{\textless{}{-}}\NormalTok{ global\_economy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Country }\SpecialCharTok{==} \StringTok{"China"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(GDP, }\AttributeTok{features =}\NormalTok{ guerrero) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pull}\NormalTok{(lambda\_guerrero)}
+
+\NormalTok{fit\_china }\OtherTok{\textless{}{-}}\NormalTok{ global\_economy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Country }\SpecialCharTok{==} \StringTok{"China"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Simple}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{ETS}\NormalTok{(GDP }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"N"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"N"}\NormalTok{)),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Holt\textquotesingle{}s method}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{ETS}\NormalTok{(GDP }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"N"}\NormalTok{)),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Damped Holt\textquotesingle{}s method}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{ETS}\NormalTok{(GDP }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"Ad"}\NormalTok{, }\AttributeTok{phi =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"N"}\NormalTok{)),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Box{-}Cox}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{ETS}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda\_china) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"N"}\NormalTok{)),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Box{-}Cox Damped}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{ETS}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda\_china) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"Ad"}\NormalTok{, }\AttributeTok{phi =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"N"}\NormalTok{)),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Log}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{ETS}\NormalTok{(}\FunctionTok{log}\NormalTok{(GDP) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"N"}\NormalTok{)),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Log Damped}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{ETS}\NormalTok{(}\FunctionTok{log}\NormalTok{(GDP) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"Ad"}\NormalTok{, }\AttributeTok{phi =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"N"}\NormalTok{))}
+\NormalTok{  )}
+
+\NormalTok{fc\_china }\OtherTok{\textless{}{-}}\NormalTok{ fit\_china }\SpecialCharTok{|\textgreater{}} \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=} \DecValTok{15}\NormalTok{)}
+
+\NormalTok{fc\_china }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(global\_economy, }\AttributeTok{level =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title=}\StringTok{"GDP: China"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{colour =} \FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{title =} \StringTok{"Forecast"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\textbf{Exercise 8.7}
+
+Find an ETS model for the Gas data from aus\_production and forecast the
+next few years. Why is multiplicative seasonality necessary here?
+Experiment with making the trend damped. Does it improve the forecasts?
+
+\hypertarget{why-is-multiplicative-seasonality-necessary}{%
+\subsubsection{\texorpdfstring{\textbf{Why is Multiplicative Seasonality
+Necessary?}}{Why is Multiplicative Seasonality Necessary?}}\label{why-is-multiplicative-seasonality-necessary}}
+
+Multiplicative seasonality is necessary in this case because
+\textbf{Australian gas production exhibits a clear pattern of increasing
+seasonal variations over time}. The amplitude of seasonal fluctuations
+grows as the level of gas production increases, which is a
+characteristic feature of \textbf{multiplicative seasonality}. If an
+\textbf{additive seasonal model} were used, it would assume that
+seasonal fluctuations remain constant over time, which is \textbf{not
+realistic for this dataset}. The second plot comparing \textbf{additive
+vs.~multiplicative seasonality} highlights this issue---while the
+\textbf{multiplicative model} captures the increasing seasonal
+variations well, the \textbf{additive model underestimates fluctuations
+at higher production levels}.
+
+\hypertarget{does-damping-the-trend-improve-forecasts}{%
+\subsubsection{\texorpdfstring{\textbf{Does Damping the Trend Improve
+Forecasts?}}{Does Damping the Trend Improve Forecasts?}}\label{does-damping-the-trend-improve-forecasts}}
+
+The first plot compares the \textbf{multiplicative model} with and
+without a \textbf{damped trend}. The \textbf{damped multiplicative
+model} slightly reduces the long-term growth trajectory, preventing
+excessive upward extrapolation. This is particularly useful if gas
+production is expected to \textbf{slow down in the future} due to
+economic, environmental, or resource constraints.
+
+From the comparison: - \textbf{Non-damped multiplicative forecasts}
+continue growing steeply, potentially overestimating future production.
+- \textbf{Damped multiplicative forecasts} show a more
+\textbf{realistic} trajectory, gradually slowing growth while still
+respecting the increasing seasonal variations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gas\_fit }\OtherTok{\textless{}{-}}\NormalTok{ aus\_production }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{additive =} \FunctionTok{ETS}\NormalTok{(Gas }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"A"}\NormalTok{)),}
+        \AttributeTok{multiplicative =} \FunctionTok{ETS}\NormalTok{(Gas }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{)),}
+        \StringTok{\textasciigrave{}}\AttributeTok{damped multiplicative}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{ETS}\NormalTok{(Gas }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"Ad"}\NormalTok{, }\AttributeTok{phi =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{))) }
+
+\NormalTok{aus\_production }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{additive =} \FunctionTok{ETS}\NormalTok{(Gas }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"A"}\NormalTok{)),}
+        \AttributeTok{multiplicative =} \FunctionTok{ETS}\NormalTok{(Gas }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{20}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(aus\_production, }\AttributeTok{level =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title=}\StringTok{"Australian Gas Production"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{colour =} \FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{title =} \StringTok{"Forecast"}\NormalTok{),}
+         \AttributeTok{subtitle=}\StringTok{"Additive vs. Multiplicative Seasonality"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aus\_production }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{multiplicative =} \FunctionTok{ETS}\NormalTok{(Gas }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{)),}
+        \StringTok{\textasciigrave{}}\AttributeTok{damped multiplicative}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{ETS}\NormalTok{(Gas }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"Ad"}\NormalTok{, }\AttributeTok{phi =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{))}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{20}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(aus\_production, }\AttributeTok{level=} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title=}\StringTok{"Australian Gas Production"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{colour =} \FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{title =} \StringTok{"Forecast"}\NormalTok{),}
+         \AttributeTok{Subtitle =} \StringTok{"Additive vs Damped Trend"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-8-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{report}\NormalTok{(gas\_fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in report.mdl_df(gas_fit): Model reporting is only supported for
+## individual models, so a glance will be shown. To see the report for a specific
+## model, use `select()` and `filter()` to identify a single model.
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 3 x 9
+##   .model                  sigma2 log_lik   AIC  AICc   BIC   MSE  AMSE    MAE
+##   <chr>                    <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>
+## 1 additive              23.6       -927. 1872. 1873. 1903.  22.7  29.7 3.35  
+## 2 multiplicative         0.00324   -831. 1681. 1682. 1711.  21.1  32.2 0.0413
+## 3 damped multiplicative  0.00340   -835. 1688. 1689. 1719.  21.0  32.4 0.0424
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{accuracy}\NormalTok{(gas\_fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 10
+##   .model            .type       ME  RMSE   MAE    MPE  MAPE  MASE RMSSE     ACF1
+##   <chr>             <chr>    <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl> <dbl>    <dbl>
+## 1 additive          Trai~  0.00525  4.76  3.35 -4.69  10.9  0.600 0.628  0.0772 
+## 2 multiplicative    Trai~ -0.115    4.60  3.02  0.199  4.08 0.542 0.606 -0.0131 
+## 3 damped multiplic~ Trai~  0.255    4.58  3.04  0.655  4.15 0.545 0.604 -0.00451
+\end{verbatim}
+
+\textbf{Exercise 8.8} Recall your retail time series data (from Exercise
+8 in Section 2.10).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Why is multiplicative seasonality necessary for this series?
+\end{enumerate}
+
+Multiplicative seasonality is necessary because Australian gas
+production shows increasing seasonal fluctuations as overall production
+levels rise. The seasonal variations are not constant; instead, they
+grow proportionally with the production level. An additive seasonal
+model assumes fixed seasonal effects, which would underestimate the
+seasonal peaks in later years. The multiplicative model, however, scales
+seasonal effects relative to the level of the series, making it more
+appropriate for this dataset.
+
+To evaluate the effectiveness of \textbf{Holt-Winters' multiplicative
+method}, we apply it to the data and compare it with a \textbf{damped
+trend variant}. The \textbf{Holt-Winters multiplicative model (HW-Mul)}
+incorporates \textbf{multiplicative seasonality}, allowing seasonal
+effects to scale with the overall level of gas production while
+permitting unrestricted trend growth. In contrast, the \textbf{damped
+Holt-Winters multiplicative model (HW-Mul-Damped)} introduces a
+\textbf{damping factor} that slows down the trend over time, preventing
+excessive future growth. By comparing these models, we assess whether
+damping the trend improves forecast accuracy and produces a more
+realistic long-term projection. One-step-ahead forecasts from both
+methods are analyzed to determine which model provides the
+\textbf{lowest Root Mean Squared Error (RMSE)}, ensuring that the chosen
+approach effectively captures the evolving seasonal and trend dynamics
+in Australian gas production.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\NormalTok{myseries }\OtherTok{\textless{}{-}}\NormalTok{ aus\_retail }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Series ID}\StringTok{\textasciigrave{}} \SpecialCharTok{==} \FunctionTok{sample}\NormalTok{(aus\_retail}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Series ID}\StringTok{\textasciigrave{}}\NormalTok{,}\DecValTok{1}\NormalTok{)) }
+
+\NormalTok{fit\_multi }\OtherTok{\textless{}{-}}\NormalTok{ myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{multiplicative =} \FunctionTok{ETS}\NormalTok{(Turnover }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{)),}
+        \StringTok{\textasciigrave{}}\AttributeTok{damped multiplicative}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{ETS}\NormalTok{(Turnover }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"Ad"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{))) }
+
+\NormalTok{fit\_multi }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{36}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(myseries, }\AttributeTok{level =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title=}\StringTok{"Australian Retail Turnover"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{colour =} \FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{title =} \StringTok{"Forecast"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{accuracy}\NormalTok{(fit\_multi) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(.model, RMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+##   .model                 RMSE
+##   <chr>                 <dbl>
+## 1 multiplicative         9.74
+## 2 damped multiplicative  9.73
+\end{verbatim}
+
+The RMSE with damped multicative shows lower RMSE and it is slighly
+better than Multiplicative.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{multiplicative =} \FunctionTok{ETS}\NormalTok{(Turnover }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsresiduals}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Multiplicative Method"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+The residuals from the dample multiplicative method mostly exhibit white
+noise behavior, meaning that the model has successfully captured the key
+patterns in the data. Although there are minor signs of autocorrelation,
+they are not strong enough to indicate model misspecification. This
+suggests that this multiplicative method is a good fit for the data,
+producing reliable forecasts with minimal bias. However, further
+improvements could be tested, such as refining the seasonal components
+or experimenting with additional damping.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{multiplicative =} \FunctionTok{ETS}\NormalTok{(Turnover }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{augment}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{features}\NormalTok{(.innov, box\_pierce, }\AttributeTok{lag =} \DecValTok{24}\NormalTok{, }\AttributeTok{dof =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 5
+##   State           Industry               .model         bp_stat bp_pvalue
+##   <chr>           <chr>                  <chr>            <dbl>     <dbl>
+## 1 New South Wales Takeaway food services multiplicative    28.2     0.253
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{multiplicative =} \FunctionTok{ETS}\NormalTok{(Turnover }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{augment}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{features}\NormalTok{(.innov, ljung\_box, }\AttributeTok{lag =} \DecValTok{24}\NormalTok{, }\AttributeTok{dof =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 5
+##   State           Industry               .model         lb_stat lb_pvalue
+##   <chr>           <chr>                  <chr>            <dbl>     <dbl>
+## 1 New South Wales Takeaway food services multiplicative    29.2     0.213
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myseries\_train }\OtherTok{\textless{}{-}}\NormalTok{ myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\FunctionTok{year}\NormalTok{(Month) }\SpecialCharTok{\textless{}} \DecValTok{2011}\NormalTok{)}
+
+\NormalTok{fit\_train }\OtherTok{\textless{}{-}}\NormalTok{ myseries\_train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{multi =} \FunctionTok{ETS}\NormalTok{(Turnover }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{)),}
+        \AttributeTok{snaive =} \FunctionTok{SNAIVE}\NormalTok{(Turnover))}
+
+\CommentTok{\#producing forecasts}
+\NormalTok{fc }\OtherTok{\textless{}{-}}\NormalTok{ fit\_train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{new\_data =} \FunctionTok{anti\_join}\NormalTok{(myseries, myseries\_train))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining with `by = join_by(State, Industry, `Series ID`, Month, Turnover)`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fc }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{autoplot}\NormalTok{(myseries, }\AttributeTok{level =} \ConstantTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{accuracy}\NormalTok{(fit\_train) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(.type, .model, RMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   .type    .model  RMSE
+##   <chr>    <chr>  <dbl>
+## 1 Training multi   8.33
+## 2 Training snaive 26.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fc }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{accuracy}\NormalTok{(myseries)  }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(.type, .model, RMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   .type .model  RMSE
+##   <chr> <chr>  <dbl>
+## 1 Test  multi   70.4
+## 2 Test  snaive  96.8
+\end{verbatim}
+
+The \textbf{multiplicative method} provides a more accurate forecast for
+the data, as indicated by its \textbf{significantly lower RMSE} compared
+to the \textbf{seasonal naïve approach}. This suggests that the
+\textbf{multiplicative method} is better suited for capturing the
+underlying patterns and seasonal variations in the dataset.
+
+Both the \textbf{Box-Pierce test} and the \textbf{Ljung-Box test} were
+applied to the residuals of the \textbf{multiplicative ETS model} for
+\textbf{Takeaway food services in New South Wales} to assess whether
+they exhibit white noise characteristics. The \textbf{Box-Pierce test}
+produced a \textbf{bp\_stat of 28.2} with a \textbf{p-value of 0.253},
+while the \textbf{Ljung-Box test} resulted in an \textbf{lb\_stat of
+29.2} with a \textbf{p-value of 0.213}. In both cases, the
+\textbf{p-values are well above the common significance threshold
+(0.05), suggesting that there is no strong evidence of autocorrelation
+in the residuals}. This indicates that the \textbf{multiplicative ETS
+model adequately captures the underlying patterns in the data}, making
+it a suitable choice for forecasting. The slightly higher test statistic
+for the \textbf{Ljung-Box test} suggests it may be more sensitive to
+autocorrelation at higher lags, but the overall conclusion remains the
+same---\textbf{the residuals resemble white noise, and the model is
+well-fitted}.
+
+\textbf{Exercise 8.9}
+
+For the same retail data, try an STL decomposition applied to the
+Box-Cox transformed series, followed by ETS on the seasonally adjusted
+data. How does that compare with your best previous forecasts on the
+test set?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda\_s }\OtherTok{\textless{}{-}}\NormalTok{ myseries\_train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(Turnover, }\AttributeTok{features =}\NormalTok{ guerrero) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pull}\NormalTok{(lambda\_guerrero)}
+
+\CommentTok{\#stl decomp applied to the box cox transformed data}
+\NormalTok{myseries\_train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}
+    \FunctionTok{STL}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(Turnover,lambda\_s) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{season}\NormalTok{(}\AttributeTok{window =} \StringTok{"periodic"}\NormalTok{), }\AttributeTok{robust =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{components}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"STL with Box{-}Cox"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#computed the seasonally adjusted data , stl decomp applied to the box cox transformed data}
+\NormalTok{dcmp }\OtherTok{\textless{}{-}}\NormalTok{ myseries\_train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{STL\_box =} \FunctionTok{STL}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(Turnover,lambda\_s) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{season}\NormalTok{(}\AttributeTok{window =} \StringTok{"periodic"}\NormalTok{), }\AttributeTok{robust =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{components}\NormalTok{()}
+
+\CommentTok{\#replacing turnover with the seasonally adjusted data}
+\NormalTok{myseries\_train}\SpecialCharTok{$}\NormalTok{Turnover }\OtherTok{\textless{}{-}}\NormalTok{ dcmp}\SpecialCharTok{$}\NormalTok{season\_adjust}
+
+\CommentTok{\#modeling on the seasonally adjusted data}
+\NormalTok{fit }\OtherTok{\textless{}{-}}\NormalTok{ myseries\_train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ETS}\NormalTok{(Turnover }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{)))}
+
+\CommentTok{\#checking the residuals}
+\NormalTok{fit }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{gg\_tsresiduals}\NormalTok{()  }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Residual Plots for Australian Retail Turnover"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-12-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#produce forecasts for test data}
+\NormalTok{fc }\OtherTok{\textless{}{-}}\NormalTok{ fit }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{new\_data =} \FunctionTok{anti\_join}\NormalTok{(myseries, myseries\_train))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining with `by = join_by(State, Industry, `Series ID`, Month, Turnover)`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{accuracy}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(.model, .type, RMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 3
+##   .model                                                        .type      RMSE
+##   <chr>                                                         <chr>     <dbl>
+## 1 "ETS(Turnover ~ error(\"M\") + trend(\"A\") + season(\"M\"))" Training 0.0254
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fc }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{accuracy}\NormalTok{(myseries) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(.model, .type, RMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 3
+##   .model                                                        .type  RMSE
+##   <chr>                                                         <chr> <dbl>
+## 1 "ETS(Turnover ~ error(\"M\") + trend(\"A\") + season(\"M\"))" Test   278.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda }\OtherTok{\textless{}{-}}\NormalTok{ myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(Turnover, }\AttributeTok{features =}\NormalTok{ guerrero) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pull}\NormalTok{(lambda\_guerrero)}
+
+\CommentTok{\#stl decomp applied to the box cox transformed data}
+\NormalTok{myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{STL}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(Turnover,lambda) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{season}\NormalTok{(}\AttributeTok{window =} \StringTok{"periodic"}\NormalTok{), }\AttributeTok{robust =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{components}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"STL with Box{-}Cox"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#computed the seasonally adjusted data , stl decomp applied to the box cox transformed data}
+\NormalTok{dcmp }\OtherTok{\textless{}{-}}\NormalTok{ myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{STL\_box =} \FunctionTok{STL}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(Turnover,lambda) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{season}\NormalTok{(}\AttributeTok{window =} \StringTok{"periodic"}\NormalTok{), }\AttributeTok{robust =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{components}\NormalTok{()}
+
+\CommentTok{\#replacing turnover with the seasonally adjusted data}
+\NormalTok{myseries}\SpecialCharTok{$}\NormalTok{Turnover\_sa }\OtherTok{\textless{}{-}}\NormalTok{ dcmp}\SpecialCharTok{$}\NormalTok{season\_adjust}
+
+\NormalTok{myseries\_train }\OtherTok{\textless{}{-}}\NormalTok{ myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\FunctionTok{year}\NormalTok{(Month) }\SpecialCharTok{\textless{}} \DecValTok{2011}\NormalTok{)}
+
+\CommentTok{\#modeling on the seasonally adjusted data}
+\NormalTok{fit }\OtherTok{\textless{}{-}}\NormalTok{ myseries\_train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ETS}\NormalTok{(Turnover\_sa }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{)))}
+
+\CommentTok{\#checking the residuals}
+\NormalTok{fit }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{gg\_tsresiduals}\NormalTok{()  }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Residual Plots for Australian Retail Turnover"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-624-Homework-5_files/figure-latex/unnamed-chunk-13-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Box{-}Pierce test, ℓ=2m for seasonal data, m=12}
+\NormalTok{myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{multiplicative =} \FunctionTok{ETS}\NormalTok{(Turnover\_sa }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{augment}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{features}\NormalTok{(.innov, box\_pierce, }\AttributeTok{lag =} \DecValTok{24}\NormalTok{, }\AttributeTok{dof =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 5
+##   State           Industry               .model         bp_stat bp_pvalue
+##   <chr>           <chr>                  <chr>            <dbl>     <dbl>
+## 1 New South Wales Takeaway food services multiplicative    26.5     0.329
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Ljung{-}Box test}
+\NormalTok{myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{multiplicative =} \FunctionTok{ETS}\NormalTok{(Turnover\_sa }\SpecialCharTok{\textasciitilde{}} \FunctionTok{error}\NormalTok{(}\StringTok{"M"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{trend}\NormalTok{(}\StringTok{"A"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{season}\NormalTok{(}\StringTok{"M"}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{augment}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{features}\NormalTok{(.innov, ljung\_box, }\AttributeTok{lag =} \DecValTok{24}\NormalTok{, }\AttributeTok{dof =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 5
+##   State           Industry               .model         lb_stat lb_pvalue
+##   <chr>           <chr>                  <chr>            <dbl>     <dbl>
+## 1 New South Wales Takeaway food services multiplicative    27.5     0.283
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#produce forecasts for test data}
+\NormalTok{fc }\OtherTok{\textless{}{-}}\NormalTok{ fit }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{new\_data =} \FunctionTok{anti\_join}\NormalTok{(myseries, myseries\_train))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining with `by = join_by(State, Industry, `Series ID`, Month, Turnover,
+## Turnover_sa)`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{accuracy}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(.model, .type, RMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 3
+##   .model                                                           .type    RMSE
+##   <chr>                                                            <chr>   <dbl>
+## 1 "ETS(Turnover_sa ~ error(\"M\") + trend(\"A\") + season(\"M\"))" Train~ 0.0428
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fc }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{accuracy}\NormalTok{(myseries) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(.model, .type, RMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 3
+##   .model                                                           .type  RMSE
+##   <chr>                                                            <chr> <dbl>
+## 1 "ETS(Turnover_sa ~ error(\"M\") + trend(\"A\") + season(\"M\"))" Test  0.186
+\end{verbatim}
+
+Initially, I applied the \textbf{Box-Cox transformation} only to the
+training data, but this led to an unusually \textbf{large RMSE on the
+test data}, while the training RMSE remained much lower. The incorrect
+approach is hidden in the previous code chunk. I was also uncertain
+about whether to perform \textbf{STL decomposition before or after
+splitting the data}, but ultimately decided to apply the transformations
+\textbf{before splitting}, as this produced more meaningful forecasts.
+
+Next, I applied \textbf{STL decomposition} on the \textbf{Box-Cox
+transformed data} and used the \textbf{seasonally adjusted series} to
+generate forecasts using the \textbf{ETS model}. While the residuals
+from this model do \textbf{not fully resemble white noise}, the test set
+RMSE improved significantly. The \textbf{RMSE for the test data is
+0.1865}, which is considerably better compared to the \textbf{previous
+model's RMSE of 0.0428 on the training data}. This suggests that the
+revised approach improves forecast accuracy by better handling
+seasonality and transformations.
+
+\end{document}

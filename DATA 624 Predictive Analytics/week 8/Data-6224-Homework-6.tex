@@ -1,0 +1,1054 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Data 624 Homework 6},
+  pdfauthor={Warner Alexis},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Data 624 Homework 6}
+\author{Warner Alexis}
+\date{2025-03-23}
+
+\begin{document}
+\maketitle
+
+\hypertarget{arima-models}{%
+\subsection{ARIMA MODELS}\label{arima-models}}
+
+\textbf{Excercise 9.1}
+
+Figure 9.32 shows the ACFs for 36 random numbers, 360 random numbers and
+1,000 random numbers.
+
+Explain the differences among these figures. Do they all indicate that
+the data are white noise?
+
+Let's go through the questions one by one based on \textbf{Figure 9.32}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{a.-explain-the-differences-among-these-figures.-do-they-all-indicate-that-the-data-are-white-noise}{%
+\subsubsection{\texorpdfstring{\textbf{1a. Explain the differences among
+these figures. Do they all indicate that the data are white
+noise?}}{1a. Explain the differences among these figures. Do they all indicate that the data are white noise?}}\label{a.-explain-the-differences-among-these-figures.-do-they-all-indicate-that-the-data-are-white-noise}}
+
+\textbf{Differences among the figures:} - The \textbf{left graph (n =
+36)} shows a lot of variation in the autocorrelations (ACFs), with
+several spikes outside the blue significance bounds. - The
+\textbf{middle graph (n = 360)} shows less variability, and almost all
+autocorrelation values fall within the blue bounds. - The \textbf{right
+graph (n = 1,000)} shows even less variability and very tight confidence
+bands; the ACF values stay very close to zero.
+
+\textbf{Do they all indicate white noise?} - Yes, all three plots
+represent white noise series. The differences in appearance are due to
+sample size. - In the left graph, the smaller sample size (n=36) causes
+more random variation, which results in some autocorrelation values
+falling outside the confidence bounds just by chance. - As the sample
+size increases (middle and right plots), the estimates of the
+autocorrelations become more precise, and the values stay within the
+expected range for white noise.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{b.-why-are-the-critical-values-at-different-distances-from-the-mean-of-zero-why-are-the-autocorrelations-different-in-each-figure-when-they-each-refer-to-white-noise}{%
+\subsubsection{\texorpdfstring{\textbf{1b. Why are the critical values
+at different distances from the mean of zero? Why are the
+autocorrelations different in each figure when they each refer to white
+noise?}}{1b. Why are the critical values at different distances from the mean of zero? Why are the autocorrelations different in each figure when they each refer to white noise?}}\label{b.-why-are-the-critical-values-at-different-distances-from-the-mean-of-zero-why-are-the-autocorrelations-different-in-each-figure-when-they-each-refer-to-white-noise}}
+
+\textbf{Critical values and sample size:} - The blue dashed lines
+represent the 95\% confidence interval, and for white noise, they are
+approximately ±1.96/√n. - As the sample size increases, the critical
+values get closer to zero because √n increases, reducing the standard
+error of the autocorrelation estimate. - For n = 36: ±1.96/√36 ≈ ±0.33 -
+For n = 360: ±1.96/√360 ≈ ±0.10 - For n = 1,000: ±1.96/√1000 ≈ ±0.06
+
+\textbf{Autocorrelations are different in each figure because:} - With
+smaller samples, random fluctuations appear more prominently, making it
+look like there's more autocorrelation. - Larger samples provide more
+accurate estimates of the true autocorrelation (which is zero for white
+noise), so the plots for larger n show values closer to zero.
+
+\textbf{Excercise 9.2} A classic example of a non-stationary series are
+stock prices. Plot the daily closing prices for Amazon stock (contained
+in gafa\_stock), along with the ACF and PACF. Explain how each plot
+shows that the series is non-stationary and should be differenced.
+
+The time series plot of Amazon's daily closing prices reveals a clear
+upward trend over time, indicating that the series is non-stationary.
+This trend suggests that both the mean and variance are not constant,
+which violates the assumptions of stationarity. The ACF plot further
+supports this conclusion, showing a slow decay and high correlations
+across many lags---behavior typical of non-stationary data. In a
+stationary series, the ACF would drop off quickly after a few lags.
+Similarly, the PACF plot does not exhibit a sharp cutoff, but instead
+displays significant partial autocorrelations over several lags,
+reinforcing the need to difference the series to achieve stationarity.
+
+\textbf{LOading Libraries}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(latex2exp)}
+\FunctionTok{library}\NormalTok{(fpp3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'tsibble':
+##   method               from 
+##   as_tibble.grouped_df dplyr
+\end{verbatim}
+
+\begin{verbatim}
+## -- Attaching packages -------------------------------------------- fpp3 1.0.1 --
+\end{verbatim}
+
+\begin{verbatim}
+## v tibble      3.2.1     v tsibble     1.1.6
+## v dplyr       1.1.4     v tsibbledata 0.4.1
+## v tidyr       1.3.1     v feasts      0.4.1
+## v lubridate   1.9.3     v fable       0.4.1
+## v ggplot2     3.5.1
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------------- fpp3_conflicts --
+## x lubridate::date()    masks base::date()
+## x dplyr::filter()      masks stats::filter()
+## x tsibble::intersect() masks base::intersect()
+## x tsibble::interval()  masks lubridate::interval()
+## x dplyr::lag()         masks stats::lag()
+## x tsibble::setdiff()   masks base::setdiff()
+## x tsibble::union()     masks base::union()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(fable)}
+\FunctionTok{library}\NormalTok{(tsibble)}
+\FunctionTok{library}\NormalTok{(tsibbledata)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(latex2exp)}
+\NormalTok{gafa\_stock }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(Symbol }\SpecialCharTok{==} \StringTok{\textquotesingle{}AMZN\textquotesingle{}}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{gg\_tsdisplay}\NormalTok{(Close, }\AttributeTok{plot\_type =}  \StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{\textquotesingle{}Amazon Closing Stock Prize \textquotesingle{}}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\textbf{Excercise 9.3} For the following series, find an appropriate
+Box-Cox transformation and order of differencing in order to obtain
+stationary data.
+
+\begin{itemize}
+\tightlist
+\item
+  Turkish GDP from global\_economy.
+\item
+  Accommodation takings in the state of Tasmania from
+  aus\_accommodation.
+\item
+  Monthly sales from souvenirs.
+\end{itemize}
+
+The first set of plots shows the non-transformed Turkish GDP, which
+displays a strong upward trend over time, indicating clear
+non-stationarity. This is supported by the autocorrelation function
+(ACF) plot, which exhibits a slow and steady decay, and the partial
+autocorrelation function (PACF), which shows a large spike at lag 1
+followed by smaller significant lags---both of which are typical signs
+of a non-stationary time series. In contrast, the second set of plots
+presents the Turkish GDP after applying a Box-Cox transformation with λ
+= 0.16 and first-order differencing. The transformed and differenced
+series no longer shows a trend and appears to fluctuate around a
+constant mean. Additionally, both the ACF and PACF now show values
+mostly within the significance bounds and no clear pattern, indicating
+that the series has achieved stationarity and is now suitable for time
+series modeling, such as ARIMA.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{turkey\_gdp }\OtherTok{\textless{}{-}} \CommentTok{\# plot}
+\NormalTok{  global\_economy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Country }\SpecialCharTok{==} \StringTok{"Turkey"}\NormalTok{)}
+\CommentTok{\# plot}
+\NormalTok{turkey\_gdp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsdisplay}\NormalTok{(GDP, }\AttributeTok{plot\_type=}\StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Non{-}transformed Turkish GDP"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# calculate lambda}
+\NormalTok{lambda }\OtherTok{\textless{}{-}}\NormalTok{ turkey\_gdp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(GDP, }\AttributeTok{features =}\NormalTok{ guerrero) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pull}\NormalTok{(lambda\_guerrero)}
+
+
+\NormalTok{turkey\_gdp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda), unitroot\_ndiffs) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   Country ndiffs
+##   <fct>    <int>
+## 1 Turkey       1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# unit root test}
+
+
+\CommentTok{\# transformed plot}
+\NormalTok{turkey\_gdp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsdisplay}\NormalTok{(}\FunctionTok{difference}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda)), }\AttributeTok{plot\_type=}\StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{TeX}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Differenced Turkish GDP with $}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{lambda$ = "}\NormalTok{,}
+                          \FunctionTok{round}\NormalTok{(lambda,}\DecValTok{2}\NormalTok{))))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-3-2.pdf}
+
+The first set of plots displays the non-transformed Tasmania
+accommodation takings, which exhibit a clear upward trend and strong
+seasonal pattern, both indicators of a non-stationary series. The
+autocorrelation function (ACF) plot shows significant spikes at seasonal
+lags (e.g., lag 4, 8, 12, etc.), indicating the presence of quarterly
+seasonality, while the partial autocorrelation function (PACF) also
+reflects persistent seasonal effects. The second set of plots shows the
+same series after applying a Box-Cox transformation with λ = 0 (log
+transformation) and seasonal differencing. The differenced and
+transformed series appears more stable, with the trend removed and the
+seasonal pattern largely eliminated. This is confirmed by the ACF and
+PACF plots, which now show autocorrelations that fall within the
+confidence bounds or decay more quickly, indicating that the series is
+now approximately stationary and suitable for further time series
+modeling.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tasma\_acc }\OtherTok{\textless{}{-}} 
+\NormalTok{  aus\_accommodation }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(State }\SpecialCharTok{==} \StringTok{"Tasmania"}\NormalTok{)}
+
+
+\NormalTok{tasma\_acc }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsdisplay}\NormalTok{(Takings, }\AttributeTok{plot\_type=}\StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Non{-}transformed Tasmania Accomodation Takings"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# calculate lambda}
+\NormalTok{lambda }\OtherTok{\textless{}{-}}\NormalTok{tasma\_acc }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(Takings, }\AttributeTok{features =}\NormalTok{ guerrero) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pull}\NormalTok{(lambda\_guerrero)}
+
+\CommentTok{\#unit root test}
+\NormalTok{tasma\_acc }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(Takings,lambda), unitroot\_nsdiffs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   State    nsdiffs
+##   <chr>      <int>
+## 1 Tasmania       1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tasma\_acc }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsdisplay}\NormalTok{(}\FunctionTok{difference}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(Takings,lambda), }\DecValTok{4}\NormalTok{), }\AttributeTok{plot\_type=}\StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{TeX}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Differenced Tasmania Accomodation Takings with $}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{lambda$ = "}\NormalTok{,}
+                          \FunctionTok{round}\NormalTok{(lambda,}\DecValTok{2}\NormalTok{))))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 4 rows containing missing values or values outside the scale range
+## (`geom_line()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 4 rows containing missing values or values outside the scale range
+## (`geom_point()`).
+\end{verbatim}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# plot}
+\NormalTok{souvenirs }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsdisplay}\NormalTok{(Sales, }\AttributeTok{plot\_type=}\StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{, }\AttributeTok{lag =} \DecValTok{36}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Non{-}transformed Monthly Souvenir Sales"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# calculate lambda}
+\NormalTok{lambda }\OtherTok{\textless{}{-}}\NormalTok{ souvenirs }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(Sales, }\AttributeTok{features =}\NormalTok{ guerrero) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pull}\NormalTok{(lambda\_guerrero)}
+
+\CommentTok{\# unit root test}
+\NormalTok{souvenirs }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(Sales,lambda), unitroot\_nsdiffs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##   nsdiffs
+##     <int>
+## 1       1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{souvenirs }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsdisplay}\NormalTok{(}\FunctionTok{difference}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(Sales,lambda), }\DecValTok{12}\NormalTok{), }\AttributeTok{plot\_type=}\StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{, }\AttributeTok{lag =} \DecValTok{36}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{TeX}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Differenced Monthly Souvenir Sales with $}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{lambda$ = "}\NormalTok{,}
+                          \FunctionTok{round}\NormalTok{(lambda,}\DecValTok{2}\NormalTok{))))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-5-2.pdf}
+
+\textbf{Excercise 9.5} For your retail data (from Exercise 7 in Section
+2.10), find the appropriate order of differencing (after transformation
+if necessary) to obtain stationary data.
+
+The first set of plots presents the non-transformed retail turnover data
+for Tasmania, which displays a strong upward trend and increasing
+variance over time---both signs of non-stationarity. The ACF shows very
+slow decay, with significant autocorrelations extending across many
+lags, while the PACF shows a large spike at lag 1 followed by smaller
+but still significant values. These patterns confirm that the series is
+non-stationary in both mean and variance. In the second set of plots,
+the data have been transformed using a Box-Cox transformation with λ =
+0.27 and differenced once. The resulting series appears more stable,
+with the trend largely removed and the variance stabilized. The ACF now
+shows a much quicker decay, and the PACF displays a reduced number of
+significant lags. Although some seasonality may remain, the primary
+trend has been addressed.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Box-Cox transformation} with \textbf{λ = 0.27} is appropriate
+  to stabilize variance.
+\item
+  \textbf{First-order differencing} is sufficient to remove the trend
+  and achieve approximate stationarity.
+\item
+  Additional \textbf{seasonal differencing} (e.g., lag 12) could be
+  explored if residual seasonality is detected during modeling.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{000}\NormalTok{)}
+\NormalTok{myseries }\OtherTok{\textless{}{-}}\NormalTok{ aus\_retail }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Series ID}\StringTok{\textasciigrave{}} \SpecialCharTok{==} \FunctionTok{sample}\NormalTok{(aus\_retail}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Series ID}\StringTok{\textasciigrave{}}\NormalTok{,}\DecValTok{1}\NormalTok{)) }
+
+\CommentTok{\# plot}
+\NormalTok{myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsdisplay}\NormalTok{(Turnover, }\AttributeTok{plot\_type=}\StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{, }\AttributeTok{lag =} \DecValTok{36}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Non{-}transformed Retail Turnover"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# lambda calculation}
+\NormalTok{lambda }\OtherTok{\textless{}{-}}\NormalTok{ myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(Turnover, }\AttributeTok{features =}\NormalTok{ guerrero) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pull}\NormalTok{(lambda\_guerrero)}
+
+\CommentTok{\# unit root test}
+\NormalTok{myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(Turnover, lambda), unitroot\_nsdiffs) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 3
+##   State           Industry               nsdiffs
+##   <chr>           <chr>                    <int>
+## 1 New South Wales Takeaway food services       1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myseries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsdisplay}\NormalTok{(}\FunctionTok{difference}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(Turnover,lambda), }\DecValTok{12}\NormalTok{), }\AttributeTok{plot\_type=}\StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{, }\AttributeTok{lag =} \DecValTok{36}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{TeX}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Differenced Tasmania Accomodation Takings with $}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{lambda$ = "}\NormalTok{,}
+                          \FunctionTok{round}\NormalTok{(lambda,}\DecValTok{2}\NormalTok{))))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-6-2.pdf}
+
+\textbf{Excercise 9.6}
+
+Simulate and plot some data from simple ARIMA models.
+
+Use the following R code to generate data from an AR(1) model with
+
+This exercise explores the behavior of various ARIMA models through
+simulation and visualization. Starting with an AR(1) model with ϕ₁ =
+0.6, the series shows moderate persistence, and increasing ϕ₁ leads to
+smoother, more correlated patterns, while lower values make the series
+resemble white noise. The MA(1) model with θ₁ = 0.6 generates a series
+influenced by past shocks, though the effect dissipates quickly compared
+to AR models. Combining both effects, the ARMA(1,1) model demonstrates
+smoother yet still responsive behavior, balancing the autocorrelation
+from AR and the noise filtering of MA. A non-stationary AR(2) model with
+ϕ₁ = -0.8 and ϕ₂ = 0.3 produces a series with irregular and unstable
+dynamics, often with large swings and no consistent mean. Comparing the
+ARMA(1,1) and AR(2) plots highlights the contrast between a stable,
+stationary process and one that lacks mean reversion, emphasizing the
+importance of parameter selection in time series modeling.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# a }
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{e }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\DecValTok{100}\NormalTok{) \{}
+\NormalTok{  y[i] }\OtherTok{\textless{}{-}} \FloatTok{0.6} \SpecialCharTok{*}\NormalTok{ y[i }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ e[i]}
+\NormalTok{\}}
+\NormalTok{sim }\OtherTok{\textless{}{-}} \FunctionTok{tsibble}\NormalTok{(}\AttributeTok{idx =} \FunctionTok{seq\_len}\NormalTok{(}\DecValTok{100}\NormalTok{), }\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{index =}\NormalTok{ idx)}
+\CommentTok{\# b }
+\NormalTok{sim }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(y) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"AR(1) Time Series with ϕ₁ = 0.6"}\NormalTok{, }\AttributeTok{y =} \StringTok{"y"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'AR(1) Time Series with ϕ₁ = 0.6' in 'mbcsToSbcs': dot
+## substituted for <cf>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'AR(1) Time Series with ϕ₁ = 0.6' in 'mbcsToSbcs': dot
+## substituted for <95>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'AR(1) Time Series with ϕ₁ = 0.6' in 'mbcsToSbcs': dot
+## substituted for <cf>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'AR(1) Time Series with ϕ₁ = 0.6' in 'mbcsToSbcs': dot
+## substituted for <95>
+\end{verbatim}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# c }
+\NormalTok{e }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{101}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{100}\NormalTok{)\{}
+\NormalTok{  y[i] }\OtherTok{\textless{}{-}}\NormalTok{ e[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{] }\SpecialCharTok{+} \FloatTok{0.6} \SpecialCharTok{*}\NormalTok{ e[i]}
+\NormalTok{\}}
+\NormalTok{sim\_ma }\OtherTok{\textless{}{-}} \FunctionTok{tsibble}\NormalTok{(}\AttributeTok{idx =} \FunctionTok{seq\_len}\NormalTok{(}\DecValTok{100}\NormalTok{), }\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{index =}\NormalTok{ idx)}
+
+\CommentTok{\#d}
+\NormalTok{sim\_ma }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(y) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"MA(1) Time Series with θ₁ = 0.6"}\NormalTok{, }\AttributeTok{y =} \StringTok{"y"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'MA(1) Time Series with θ₁ = 0.6' in 'mbcsToSbcs': dot
+## substituted for <ce>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'MA(1) Time Series with θ₁ = 0.6' in 'mbcsToSbcs': dot
+## substituted for <b8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'MA(1) Time Series with θ₁ = 0.6' in 'mbcsToSbcs': dot
+## substituted for <ce>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'MA(1) Time Series with θ₁ = 0.6' in 'mbcsToSbcs': dot
+## substituted for <b8>
+\end{verbatim}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-7-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#e}
+\NormalTok{e }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{101}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\DecValTok{100}\NormalTok{)\{}
+\NormalTok{  y[i] }\OtherTok{\textless{}{-}} \FloatTok{0.6} \SpecialCharTok{*}\NormalTok{ y[i }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ e[i] }\SpecialCharTok{+} \FloatTok{0.6} \SpecialCharTok{*}\NormalTok{ e[i }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{]}
+\NormalTok{\}}
+\NormalTok{sim\_arma }\OtherTok{\textless{}{-}} \FunctionTok{tsibble}\NormalTok{(}\AttributeTok{idx =} \FunctionTok{seq\_len}\NormalTok{(}\DecValTok{100}\NormalTok{), }\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{index =}\NormalTok{ idx)}
+\FunctionTok{autoplot}\NormalTok{(sim\_arma, y) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"ARMA(1,1) Series"}\NormalTok{, }\AttributeTok{y =} \StringTok{"y"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-7-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# f}
+\NormalTok{e }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{102}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{3}\SpecialCharTok{:}\DecValTok{100}\NormalTok{)\{}
+\NormalTok{  y[i] }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FloatTok{0.8} \SpecialCharTok{*}\NormalTok{ y[i }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{] }\SpecialCharTok{+} \FloatTok{0.3} \SpecialCharTok{*}\NormalTok{ y[i }\SpecialCharTok{{-}} \DecValTok{2}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ e[i]}
+\NormalTok{\}}
+\NormalTok{sim\_ar2 }\OtherTok{\textless{}{-}} \FunctionTok{tsibble}\NormalTok{(}\AttributeTok{idx =} \FunctionTok{seq\_len}\NormalTok{(}\DecValTok{100}\NormalTok{), }\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{index =}\NormalTok{ idx)}
+\FunctionTok{autoplot}\NormalTok{(sim\_ar2, y) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"AR(2) Series (Non{-}stationary)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"y"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-7-4.pdf}
+
+\textbf{Excercise 9.7}
+
+The model can be written in term the baskshift operator
+
+\(y_t = -0.87 \varepsilon_{t-1} + \varepsilon_t\)
+
+\[
+(1 - B)^2 y_t = (1 - 0.87B) \varepsilon_t
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit }\OtherTok{\textless{}{-}}\NormalTok{ aus\_airpassengers }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Year }\SpecialCharTok{\textless{}} \DecValTok{2012}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ARIMA}\NormalTok{(Passengers)) }
+
+\FunctionTok{report}\NormalTok{(fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Series: Passengers 
+## Model: ARIMA(0,2,1) 
+## 
+## Coefficients:
+##           ma1
+##       -0.8756
+## s.e.   0.0722
+## 
+## sigma^2 estimated as 4.671:  log likelihood=-87.8
+## AIC=179.61   AICc=179.93   BIC=182.99
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(aus\_airpassengers) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Australian Aircraft Passengers with ARIMA(0,2,1)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Passengers (in millions)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{gg\_tsresiduals}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Residuals for ARIMA(0,2,1)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-8-2.pdf}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi}.}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Plot forecasts from an ARIMA(0,1,0) model with drift and compare
+    these to part a.
+  \end{enumerate}
+\end{itemize}
+
+The ARIMA model from part (a) forecasted values that were higher than
+the actual observations, whereas this ARIMA model predicted values that
+were lower than the actual outcomes. Additionally, the slope of the
+forecasts appears to be more gradual, indicating a slower rate of change
+over time.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit2 }\OtherTok{\textless{}{-}}\NormalTok{aus\_airpassengers }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Year }\SpecialCharTok{\textless{}} \DecValTok{2012}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ARIMA}\NormalTok{(Passengers }\SpecialCharTok{\textasciitilde{}} \FunctionTok{pdq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{)))}
+
+\NormalTok{fit2 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(aus\_airpassengers) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Australian Aircraft Passengers with ARIMA(0,1,0)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Passengers (in millions)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit2 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{gg\_tsresiduals}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Residuals for ARIMA(0,1,0)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-9-2.pdf}
+- d.~Plot forecasts from an ARIMA(2,1,2) model with drift and compare
+these to parts a and c.~Remove the constant and see what happens
+
+It is more similar to part (a), and the residuals appear to resemble
+white noise. When the constant is removed, the model effectively becomes
+a null model. Omitting the constant results in the forecast including a
+polynomial trend of order \(d - 1\)---which, in this case, is
+0---rendering the series non-stationary.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit3 }\OtherTok{\textless{}{-}}\NormalTok{aus\_airpassengers }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Year }\SpecialCharTok{\textless{}} \DecValTok{2012}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ARIMA}\NormalTok{(Passengers }\SpecialCharTok{\textasciitilde{}} \FunctionTok{pdq}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)))}
+
+\NormalTok{fit3 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(aus\_airpassengers) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Australian Aircraft Passengers with ARIMA(2,1,2)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Passengers (in millions)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit3 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{gg\_tsresiduals}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Residuals for ARIMA(2,1,2)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-10-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#removing constant}
+\NormalTok{fit4 }\OtherTok{\textless{}{-}}\NormalTok{aus\_airpassengers }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Year }\SpecialCharTok{\textless{}} \DecValTok{2012}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ARIMA}\NormalTok{(Passengers }\SpecialCharTok{\textasciitilde{}} \DecValTok{0} \SpecialCharTok{+} \FunctionTok{pdq}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)))}
+
+\FunctionTok{report}\NormalTok{(fit4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Series: Passengers 
+## Model: NULL model 
+## NULL model
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Plot forecasts from an ARIMA(0,2,1) model with a constant. What
+  happens?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit5 }\OtherTok{\textless{}{-}}\NormalTok{aus\_airpassengers }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Year }\SpecialCharTok{\textless{}} \DecValTok{2012}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ARIMA}\NormalTok{(Passengers }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+} \FunctionTok{pdq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Model specification induces a quadratic or higher order polynomial trend. 
+## This is generally discouraged, consider removing the constant or reducing the number of differences.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(aus\_airpassengers) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Australian Aircraft Passengers with ARIMA(0,2,1) with constant"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Passengers (in millions)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{gg\_tsresiduals}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Residuals for ARIMA(0,2,1) "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-11-2.pdf}
+
+\textbf{Exercise 9.8} or the United States GDP series (from
+global\_economy):
+
+\begin{itemize}
+\tightlist
+\item
+  if necessary, find a suitable Box-Cox transformation for the data;
+\item
+  fit a suitable ARIMA model to the transformed data using ARIMA();
+\item
+  try some other plausible models by experimenting with the orders
+  chosen;
+\item
+  choose what you think is the best model and check the residual
+  diagnostics;
+\item
+  produce forecasts of your fitted model. Do the forecasts look
+  reasonable?
+\item
+  compare the results with what you would obtain using ETS() (with no
+  transformation).
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{usa\_gdp }\OtherTok{\textless{}{-}}\NormalTok{ global\_economy }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(Code }\SpecialCharTok{==} \StringTok{\textquotesingle{}USA\textquotesingle{}}\NormalTok{)}
+\NormalTok{usa\_gdp }\SpecialCharTok{|\textgreater{}} \FunctionTok{gg\_tsdisplay}\NormalTok{(GDP, }\AttributeTok{plot\_type =} \StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Non{-}transformed United States GDP"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi}.}
+  \tightlist
+  \item
+    if necessary, find a suitable Box-Cox transformation for the data;
+  \end{enumerate}
+\end{itemize}
+
+ARIMA(1,1,0) with a drift was fitted to the tansformed data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda  }\OtherTok{\textless{}{-}}\NormalTok{usa\_gdp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(GDP, }\AttributeTok{features =}\NormalTok{ guerrero) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pull}\NormalTok{(lambda\_guerrero)}
+\NormalTok{lambda}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2819443
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fit a suitable ARIMA model to the transformed data using ARIMA();}
+\NormalTok{fit\_usa }\OtherTok{\textless{}{-}}\NormalTok{ global\_economy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Code }\SpecialCharTok{==} \StringTok{"USA"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ARIMA}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP, lambda))) }
+
+\FunctionTok{report}\NormalTok{(fit\_usa)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Series: GDP 
+## Model: ARIMA(1,1,0) w/ drift 
+## Transformation: box_cox(GDP, lambda) 
+## 
+## Coefficients:
+##          ar1  constant
+##       0.4586  118.1822
+## s.e.  0.1198    9.5047
+## 
+## sigma^2 estimated as 5479:  log likelihood=-325.32
+## AIC=656.65   AICc=657.1   BIC=662.78
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# transformed plot}
+\NormalTok{usa\_gdp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsdisplay}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda), }\AttributeTok{plot\_type=}\StringTok{\textquotesingle{}partial\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Transformed United States GDP"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# unit root test}
+\NormalTok{usa\_gdp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{features}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda), unitroot\_ndiffs) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   Country       ndiffs
+##   <fct>          <int>
+## 1 United States      1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# modeling several }
+\NormalTok{usa\_fit }\OtherTok{\textless{}{-}}\NormalTok{ global\_economy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Code }\SpecialCharTok{==} \StringTok{"USA"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\AttributeTok{arima110 =} \FunctionTok{ARIMA}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{pdq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{)),}
+        \AttributeTok{arima120 =} \FunctionTok{ARIMA}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{pdq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{0}\NormalTok{)),}
+        \AttributeTok{arima210 =} \FunctionTok{ARIMA}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{pdq}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{)),}
+        \AttributeTok{arima212 =} \FunctionTok{ARIMA}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{pdq}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)),}
+        \AttributeTok{arima111 =} \FunctionTok{ARIMA}\NormalTok{(}\FunctionTok{box\_cox}\NormalTok{(GDP,lambda) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{pdq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)))}
+
+\FunctionTok{glance}\NormalTok{(usa\_fit) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(AICc) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(.model}\SpecialCharTok{:}\NormalTok{BIC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 6
+##   .model   sigma2 log_lik   AIC  AICc   BIC
+##   <chr>     <dbl>   <dbl> <dbl> <dbl> <dbl>
+## 1 arima120  6780.   -326.  656.  656.  660.
+## 2 arima110  5479.   -325.  657.  657.  663.
+## 3 arima111  5580.   -325.  659.  659.  667.
+## 4 arima210  5580.   -325.  659.  659.  667.
+## 5 arima212  5734.   -325.  662.  664.  674.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# d. choose what you think is the best model and check the residual diagnostics;}
+\NormalTok{usa\_fit }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(arima120) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gg\_tsresiduals}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Residuals for ARIMA(1,2,0)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-13-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# e. produce forecasts of your fitted model. Do the forecasts look reasonable?}
+\NormalTok{usa\_fit }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(.model}\SpecialCharTok{==}\StringTok{\textquotesingle{}arima120\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(global\_economy)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-13-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# f. compare the results with what you would obtain using ETS() (with no transformation).}
+\NormalTok{fit\_ets }\OtherTok{\textless{}{-}}\NormalTok{ global\_economy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Code }\SpecialCharTok{==} \StringTok{"USA"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{model}\NormalTok{(}\FunctionTok{ETS}\NormalTok{(GDP))}
+
+\FunctionTok{report}\NormalTok{(fit\_ets)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Series: GDP 
+## Model: ETS(M,A,N) 
+##   Smoothing parameters:
+##     alpha = 0.9990876 
+##     beta  = 0.5011949 
+## 
+##   Initial states:
+##          l[0]        b[0]
+##  448093333334 64917355687
+## 
+##   sigma^2:  7e-04
+## 
+##      AIC     AICc      BIC 
+## 3190.787 3191.941 3201.089
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit\_ets }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{forecast}\NormalTok{(}\AttributeTok{h=}\DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{autoplot}\NormalTok{(global\_economy)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data-6224-Homework-6_files/figure-latex/unnamed-chunk-13-4.pdf}
+
+The analysis of the United States GDP series from the
+\texttt{global\_economy} dataset involved applying a Box-Cox
+transformation to stabilize the variance, followed by fitting an
+ARIMA(1,2,0) model. The transformed series showed a clear upward trend
+and strong autocorrelation, indicating the need for differencing. After
+fitting the ARIMA model, the residual diagnostics suggested that the
+residuals behaved like white noise, with no significant autocorrelation
+and an approximately normal distribution. Forecasts from the ARIMA model
+were reasonable, showing a smooth upward trajectory with appropriate
+uncertainty bounds. A comparison with the ETS model (without
+transformation) produced similar forecast behavior, suggesting that both
+approaches captured the underlying trend effectively. However, ARIMA may
+offer better interpretability due to its explicit handling of
+differencing and autocorrelation.
+
+\end{document}

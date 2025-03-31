@@ -1,0 +1,290 @@
+---
+title: "Data 524 Assignment 2"
+author: "Warner Alexis"
+date: "2025-02-16"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## The Forcaster Toolbox 
+
+**Excercise 3.1**
+
+For the following series, find an appropriate Box-Cox transformation in order to stabilise the variance.
+
+>usnetelec
+>usgdp
+>mcopper
+>enplanements
+
+```{r, echo=F,attr.warning=F, warning=F}
+# Load libraries 
+library(tsibble)
+library(tsibbledata)
+library(fpp3)
+library(fpp2)
+library(dplyr)
+library(lubridate)
+library(patchwork)
+library(ggplot2)
+```
+
+
+
+Let create a function that read Box 
+
+```{r pressure, echo=FALSE}
+# Define a function to find the optimal Box-Cox lambda
+find_lambda <- function(series) {
+  lambda <- BoxCox.lambda(series)
+  print(paste("Optimal Lambda for series:", lambda))
+  return(lambda)
+}
+
+# Find lambda for each series
+lambda_usnetelec <- find_lambda(usnetelec)
+lambda_usgdp <- find_lambda(usgdp)
+lambda_mcopper <- find_lambda(mcopper)
+lambda_enplanements <- find_lambda(enplanements)
+
+# Apply Box-Cox transformation to each series
+usnetelec_transformed <- BoxCox(usnetelec, lambda_usnetelec)
+usgdp_transformed <- BoxCox(usgdp, lambda_usgdp)
+mcopper_transformed <- BoxCox(mcopper, lambda_mcopper)
+enplanements_transformed <- BoxCox(enplanements, lambda_enplanements)
+autoplot(usnetelec_transformed)
+
+par(mfrow=c(2,2), oma = c(0,0,2,0)) # puts 4 plots in one window (2x2)
+# Plot using autoplot and arrange in a 2x2 grid
+autoplot(usnetelec) + ggtitle("Original usnetelec")
+autoplot(usnetelec_transformed) + ggtitle("Transformed usnetelec")
+autoplot(usgdp) + ggtitle("Original usgdp")
+autoplot(usgdp_transformed) + ggtitle("Transformed usgdp")
+
+autoplot(mcopper) + ggtitle("Original mcopper")
+autoplot(mcopper_transformed) + ggtitle("Transformed mcopper")
+autoplot(enplanements) + ggtitle("Original enplanements")
+autoplot(enplanements_transformed) + ggtitle("Transformed enplanements")
+
+
+```
+
+The original time series graphs exhibit non-stationary behavior, with increasing variance and trends over time, especially in **usnetelec**, **usgdp**, and **mcopper**, which show exponential-like growth. The **Box-Cox transformed** graphs demonstrate more stabilized variance and a more linear trend, making them more suitable for time series modeling. In particular, **usnetelec** and **usgdp** show significant variance reduction post-transformation. The **mcopper** and **enplanements** series, which have more irregular fluctuations, also exhibit a more stabilized pattern after transformation, though seasonal patterns remain visible in **enplanements**. Overall, the transformation effectively mitigates heteroscedasticity, improving the series for forecasting purposes.
+
+
+
+**Excercise 3.2**
+Why is a Box-Cox transformation unhelpful for the cangas data?
+
+
+```{r}
+
+
+# Find lamba for cangas 
+lambda_cangas <- find_lambda(cangas)
+# Apply Box-Cox transformation to canga series 
+cangas_trasnformed <- BoxCox(cangas, lambda_cangas)
+autoplot(cangas) + ggtitle("Original cangas")
+autoplot(cangas_trasnformed) + ggtitle("Transformed cangas")
+
+
+
+```
+
+
+
+The Box-Cox transformation is unhelpful for the **cangas** data because it does not effectively address the key challenges in the series. While the transformation is designed to stabilize variance, the **cangas** data primarily exhibits a strong **upward trend** and pronounced **seasonality**, neither of which are mitigated by the transformation. The seasonal fluctuations remain just as prominent, indicating that **seasonal differencing** would be a more suitable approach. Additionally, while there is some variation in amplitude, the variance instability is not severe enough to warrant a Box-Cox transformation. Instead, methods like **log transformation** or **differencing** (both regular and seasonal) would likely be more effective in making the series stationary and suitable for forecasting.
+
+
+
+**Exercise 3.3**
+What Box-Cox transformation would you select for your retail data (from Exercise 3 in Section 2.10)?
+
+
+
+```{r}
+
+
+library(readxl)
+library(httr)
+library(openxlsx)
+url <- 'https://raw.githubusercontent.com/joewarner89/Data-624-Predictive-Anaytics/main/workspace/retail.xlsx'
+
+temp_file <- tempfile(fileext = ".xlsx")  # Create a temporary file
+
+download.file(url, temp_file, mode = "wb")  # Download 
+retail <- read_excel(temp_file, skip = 1)  # Read the Excel file
+
+head(retail)
+myts <- ts(retail[,"A3349873A"],
+           frequency=12, start=c(1982,4))
+
+# Find lambda for each series
+lambda_myts <- find_lambda(myts)
+myts_transformed <- BoxCox(myts,lambda_myts)
+
+autoplot(myts) + ggtitle("Original retail data with myts")
+autoplot(myts_transformed) + ggtitle("Transformed myts")
+
+```
+
+
+**Exercise 3.4**
+For each of the following series, make a graph of the data. If transforming seems appropriate, do so and describe the effect. dole, usdeaths, bricksq.
+
+
+```{r}
+autoplot(dole)
+autoplot(usdeaths)
+autoplot(bricksq)
+
+
+
+
+# Find lamba for dole 
+lambda_dole <- find_lambda(dole)
+# Apply Box-Cox transformation to  series 
+dole_trasnformed <- BoxCox(dole, lambda_dole)
+autoplot(dole) + ggtitle("Original dole")
+autoplot(dole_trasnformed) + ggtitle("Transformed dole")
+
+# Find lamba for bricks 
+lambda_bricks <- find_lambda(bricksq)
+# Apply Box-Cox transformation to bricks series 
+bricks_trasnformed <- BoxCox(bricksq, lambda_bricks)
+autoplot(bricksq) + ggtitle("Original bricks")
+autoplot(bricks_trasnformed) + ggtitle("Transformed bricks")
+
+
+```
+Dole can transformed by either log or Box-Cox due to large fluctuations in variance and bricks by Box-cox because it can help reduce variance and stabilize the series.
+
+
+**Exercise 3.5**
+
+```{r}
+# Load necessary libraries
+
+
+
+# Extract quarterly Australian beer production data from 1992 onward
+beer <- window(ausbeer, start=1992)
+
+# Apply a seasonal naïve forecast
+fc <- snaive(beer)
+
+# Plot the forecast
+autoplot(fc) + ggtitle("Seasonal Naïve Forecast for Australian Beer Production")
+
+# Compute and plot residuals
+res <- residuals(fc)
+autoplot(res) + ggtitle("Residuals from Seasonal Naïve Forecast")
+
+# Check if residuals are white noise and normally distributed
+checkresiduals(fc)
+
+```
+
+
+
+**Exercise 3.7**
+Are the following statements true or false? Explain your answer.
+
+Good forecast methods should have normally distributed residuals.
+A model with small residuals will give good forecasts.
+The best measure of forecast accuracy is MAPE.
+If your model doesn’t forecast well, you should make it more complicated.
+Always choose the model with the best forecast accuracy as measured on the test set.
+
+
+
+
+
+While accuracy is crucial, it is not the only factor when selecting a model. 
+
+
+> The best model should also be interpretable, robust, and computationally efficient. 
+
+
+> Overfitting can lead to a model that performs exceptionally well on the test set but poorly in real-world applications. 
+
+> Practical considerations, such as data availability and ease of use, should also influence model selection.
+
+
+**Exercise 3.8**
+
+
+
+```{r}
+myts.train <- window(myts, end=c(2010,12))
+myts.test <- window(myts, start=2011)
+
+autoplot(myts) +
+  autolayer(myts.train, series="Training") +
+  autolayer(myts.test, series="Test")
+
+fc <- snaive(myts.train)
+
+accuracy(fc,myts.test)
+
+checkresiduals(fc)
+```
+
+
+
+No. The residuals show autocorrelation and deviation from normality, suggesting that the seasonal naïve model is not fully appropriate.
+The accuracy is  Highly sensitive. The test set follows a stronger trend, and the naïve model struggles to adapt, showing that forecast accuracy depends on the chosen split.
+
+
+
+```{r}
+# Create training sets using window function
+vsight1 <- window(visnights[, "QLDMetro"], end = c(2015, 4))
+vsight2 <- window(visnights[, "QLDMetro"], end = c(2014, 4))
+vsight3 <- window(visnights[, "QLDMetro"], end = c(2013, 4))
+#Generate forecasts using snaive method
+fc1 <- forecast(snaive(vsight1), h = 4)
+fc2 <- forecast(snaive(vsight3), h = 4)
+fc3 <- forecast(snaive(vsight3), h = 4)
+
+
+# Calculate accuracy measures for each forecast
+accuracy_fc1 <- accuracy(fc1)
+accuracy_fc2 <- accuracy(fc2)
+accuracy_fc3 <- accuracy(fc3)
+
+# Extract MAPE values
+mape_fc1 <- accuracy_fc1[,"MAPE"]
+mape_fc2 <- accuracy_fc2[,"MAPE"]
+mape_fc3 <- accuracy_fc3[,"MAPE"]
+
+# Print MAPE values
+print(mape_fc1)
+print(mape_fc2)
+print(mape_fc3)
+```
+
+ 
+
+Yes, the accuracy measures **are sensitive** to the training/test split. The **Mean Absolute Percentage Error (MAPE)** values for three different forecasts (`fc1`, `fc2`, and `fc3`) show slight variations:
+
+- **MAPE(fc1) = 7.98%**  
+- **MAPE(fc2) = 8.27%**  
+- **MAPE(fc3) = 8.27%**  
+
+This variation suggests that the accuracy metrics change depending on the **chosen training and test sets**. Even small adjustments in the split point can **impact forecast accuracy**, particularly when the time series has **trends, seasonality, or structural changes**.
+
+
+1. **Different Trend Phases**: If the test set includes a period of **higher growth or fluctuations**, the forecast accuracy may decline.
+2. **Seasonality Effects**: Some quarters may have more unpredictable patterns (e.g., tourism data in **visnights** may have seasonal peaks).
+3. **Model Overfitting**: If a model is optimized for a specific training period, its performance may drop when tested on a different data segment.
+
+
+The results confirm that **MAPE is sensitive to how the training and test data are divided**. To get a more reliable measure of accuracy, a **rolling forecast approach (cross-validation)** should be considered, ensuring that the model's performance is evaluated across multiple test periods rather than a single split.
+
+
